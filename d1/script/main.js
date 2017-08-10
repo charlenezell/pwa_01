@@ -1,1 +1,1 @@
-navigator.serviceWorker&&navigator.serviceWorker.register('/d1/service-worker-d1.js')&&alert("sw support");
+navigator.serviceWorker&&navigator.serviceWorker.register('/d1/service-worker-d1.js')
