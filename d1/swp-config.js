@@ -1,0 +1,10 @@
+module.exports={
+    staticFileGlobs:[
+        "d1/image/*.*",
+        "d1/script/*.*",
+        "d1/style/*.*",
+        "d1/*.html"
+    ],
+    stripPrefix:'d1/',
+    swFile:"d1/service-worker-d1.js"
+}
