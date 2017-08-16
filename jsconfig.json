@@ -1,0 +1,9 @@
+{
+    "exclude": [
+        "**/node_modules/*",
+        "**/bower_components/*"
+    ],
+    "compilerOptions": {
+        "target": "ES6"
+    }
+}
