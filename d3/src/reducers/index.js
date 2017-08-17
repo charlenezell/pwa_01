@@ -7,9 +7,6 @@ export default (state = {}, action) => {
                     messageNumber: 0
                 }
             }
-            // let g={...state};
-            // g.userInfo.messageNumber=0;
-            // return g;
         default:
             return { ...state
             };
