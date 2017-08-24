@@ -1,0 +1,9 @@
+{
+  "generator-react-webpack": {
+    "appName": "d4",
+    "style": "scss",
+    "cssmodules": true,
+    "postcss": true,
+    "generatedWithVersion": 4
+  }
+}
