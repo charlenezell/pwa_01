@@ -5,7 +5,12 @@ import { Provider } from 'react-redux';
 import App from './containers/App';
 import configureStore from './stores';
 
-const store = configureStore();
+const store = configureStore({
+  novelList:{},
+  root:{
+    fetchFlag:false
+  }
+});
 
 ReactDOM.render(
   <AppContainer>

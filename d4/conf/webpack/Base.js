@@ -40,24 +40,37 @@ class WebpackBaseConfig {
         historyApiFallback: true,
         hot: true,
         inline: true,
-        port: 8000
+        port: 8000,
+        proxy: {
+          '/api': {
+            target: 'http://localhost:3100',
+            pathRewrite: {'^/api' : ''},
+            changeOrigin:true
+          }
+        }
       },
       entry: './index.js',
       module: {
-        rules: [
-          {
+        rules: [{
             enforce: 'pre',
             test: /\.js?$/,
             include: this.srcPathAbsolute,
             loader: 'babel-loader',
-            query: { presets: ['es2015'] }
+            query: {
+              presets: ['es2015']
+            }
           },
           {
             test: /^.((?!cssmodule).)*\.css$/,
-            loaders: [
-              { loader: 'style-loader' },
-              { loader: 'css-loader' },
-              { loader: 'postcss-loader' }
+            loaders: [{
+                loader: 'style-loader'
+              },
+              {
+                loader: 'css-loader'
+              },
+              {
+                loader: 'postcss-loader'
+              }
             ]
           },
           {
@@ -66,29 +79,50 @@ class WebpackBaseConfig {
           },
           {
             test: /^.((?!cssmodule).)*\.(sass|scss)$/,
-            loaders: [
-              { loader: 'style-loader' },
-              { loader: 'css-loader' },
-              { loader: 'postcss-loader' },
-              { loader: 'sass-loader' }
+            loaders: [{
+                loader: 'style-loader'
+              },
+              {
+                loader: 'css-loader'
+              },
+              {
+                loader: 'postcss-loader'
+              },
+              {
+                loader: 'sass-loader'
+              }
             ]
           },
           {
             test: /^.((?!cssmodule).)*\.less$/,
-            loaders: [
-              { loader: 'style-loader' },
-              { loader: 'css-loader' },
-              { loader: 'postcss-loader' },
-              { loader: 'less-loader' }
+            loaders: [{
+                loader: 'style-loader'
+              },
+              {
+                loader: 'css-loader'
+              },
+              {
+                loader: 'postcss-loader'
+              },
+              {
+                loader: 'less-loader'
+              }
             ]
           },
           {
             test: /^.((?!cssmodule).)*\.styl$/,
-            loaders: [
-              { loader: 'style-loader' },
-              { loader: 'css-loader' },
-              { loader: 'postcss-loader' },
-              { loader: 'stylus-loader' }
+            loaders: [{
+                loader: 'style-loader'
+              },
+              {
+                loader: 'css-loader'
+              },
+              {
+                loader: 'postcss-loader'
+              },
+              {
+                loader: 'stylus-loader'
+              }
             ]
           },
           {
@@ -98,53 +132,73 @@ class WebpackBaseConfig {
           {
             test: /\.(js|jsx)$/,
             include: [].concat(this.includedPackages, [this.srcPathAbsolute]),
-            loaders: [{ loader: 'babel-loader' }]
+            loaders: [{
+              loader: 'babel-loader'
+            }]
           },
           {
             test: /\.cssmodule\.(sass|scss)$/,
-            loaders: [
-              { loader: 'style-loader' },
+            loaders: [{
+                loader: 'style-loader'
+              },
               {
                 loader: 'css-loader',
                 query: cssModulesQuery
               },
-              { loader: 'postcss-loader' },
-              { loader: 'sass-loader' }
+              {
+                loader: 'postcss-loader'
+              },
+              {
+                loader: 'sass-loader'
+              }
             ]
           },
           {
             test: /\.cssmodule\.css$/,
-            loaders: [
-              { loader: 'style-loader' },
+            loaders: [{
+                loader: 'style-loader'
+              },
               {
                 loader: 'css-loader',
                 query: cssModulesQuery
               },
-              { loader: 'postcss-loader' }
+              {
+                loader: 'postcss-loader'
+              }
             ]
           },
           {
             test: /\.cssmodule\.less$/,
-            loaders: [
-              { loader: 'style-loader' },
+            loaders: [{
+                loader: 'style-loader'
+              },
               {
                 loader: 'css-loader',
                 query: cssModulesQuery
               },
-              { loader: 'postcss-loader' },
-              { loader: 'less-loader' }
+              {
+                loader: 'postcss-loader'
+              },
+              {
+                loader: 'less-loader'
+              }
             ]
           },
           {
             test: /\.cssmodule\.styl$/,
-            loaders: [
-              { loader: 'style-loader' },
+            loaders: [{
+                loader: 'style-loader'
+              },
               {
                 loader: 'css-loader',
                 query: cssModulesQuery
               },
-              { loader: 'postcss-loader' },
-              { loader: 'stylus-loader' }
+              {
+                loader: 'postcss-loader'
+              },
+              {
+                loader: 'stylus-loader'
+              }
             ]
           }
         ]
@@ -157,6 +211,7 @@ class WebpackBaseConfig {
       plugins: [],
       resolve: {
         alias: {
+          da: `${ this.srcPathAbsolute }/da/`,
           actions: `${ this.srcPathAbsolute }/actions/`,
           components: `${ this.srcPathAbsolute }/components/`,
           config: `${ this.srcPathAbsolute }/config/${ this.env }.js`,
@@ -173,10 +228,10 @@ class WebpackBaseConfig {
           this.srcPathAbsolute,
           'node_modules'
         ]
-      },
+      }/* ,
       postcss: function () {
         return [];
-      }
+      } */
     };
   }
 }
