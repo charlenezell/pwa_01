@@ -15,20 +15,31 @@ import Main from '../components/App';
 
 function mapStateToProps(state) {
   const props = {
-    novelList:state.novelList,
-    loading:state.root.fetchFlag
+    // novelList:state.novelList,
+    qqRecommandList:state.qqRecommandList,
+    loading:state.fetchFlag,
+    filterText:state.filterText
   };
   return props;
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProp(dispatch){
   return {
-    initData: function () {
-      dispatch(initIndexPageData());
-    },
     novelItemClick:function(e){
       dispatch(removeItem(e))
+    },
+    initPage:function(){
+      dispatch(initIndexPageData());
     }
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+
+class AppContainer extends Component{
+  componentDidMount(){
+    this.props.initPage();
+  }
+  render(){
+    return <Main {...this.props} />
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProp)(AppContainer);

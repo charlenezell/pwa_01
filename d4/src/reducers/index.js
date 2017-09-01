@@ -15,42 +15,62 @@ import {
   FETCH_END,
   FETCH_START,
   FETCH_SUCCESS_NOVELLIST,
-  REMOVE_ITEM
+  REMOVE_ITEM,
+  FILTERCHANGE,
+  FETCH_SUCCESS_RECOMMENTLIST
 } from "../actions/const.js";
 const reducers = {
-  root: function (state = {}, action) {
+  fetchFlag: function (state = false, action) {
     switch (action.type) {
       case FETCH_END:
-        return { ...state,
-          fetchFlag: false
-        }
+        return false;
       case FETCH_START:
-        return { ...state,
-          fetchFlag: true
-        }
+        return true;
       default:
         return state;
     }
   },
+  filterText: (state = "", action) => {
+    if (action.type === FILTERCHANGE) {
+      return action.payLoad;
+    } else {
+      return state;
+    }
+  },
   novelList: function (state = {}, action) {
     switch (action.type) {
-        case REMOVE_ITEM:
-        let c={...state};
+      case REMOVE_ITEM:
+        let c = { ...state };
         delete c[action.payLoad];
         return c;
-        case FETCH_SUCCESS_NOVELLIST:
-
+      case FETCH_SUCCESS_NOVELLIST:
         let g = {};
         action.payLoad.forEach(v => {
           g[v.id] = v;
         });
-        let ccc= {
+        let ccc = {
           ...state,
           ...g
         }
         return ccc;
       default:
         return state;
+    }
+  },
+  qqRecommandList:(state={},action)=>{
+    switch (action.type) {
+      case FETCH_SUCCESS_RECOMMENTLIST:
+        let g = {};
+        action.payLoad.recomments.forEach(v => {
+          g[v.id] = v;
+        });
+        let ccc = {
+          ...state,
+          ...g
+        }
+        return ccc;
+      default:
+        return state
     }
   }
 };

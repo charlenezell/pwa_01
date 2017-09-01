@@ -46,6 +46,11 @@ class WebpackBaseConfig {
             target: 'http://localhost:3100',
             pathRewrite: {'^/api' : ''},
             changeOrigin:true
+          },
+          '/qq': {
+            target: 'http://qq.100bt.com',
+            pathRewrite: {'^/qq' : ''},
+            changeOrigin:true
           }
         }
       },

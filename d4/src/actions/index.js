@@ -1,50 +1,66 @@
 import {
-  getRecommendList
+  getRecommendList,
+  getQQRecommendList
 } from 'da';
 
 import {
   FETCH_END,
   FETCH_START,
   FETCH_SUCCESS_NOVELLIST,
-  REMOVE_ITEM
+  REMOVE_ITEM,
+  FILTERCHANGE,
+  FETCH_SUCCESS_RECOMMENTLIST
 } from './const.js';
 
-let initIndexPageData = (arg) => (dispatch) => {
-  dispatch({
-    type: FETCH_START
-  });
-  return new Promise((resolve, reject) => {
-    getRecommendList().then(v => {
-      if (v.code == 0) {
-        resolve(v)
-      } else {
-        reject();
-      }
-    })
-  }).then(v => {
 
+function getQQ(resolve, reject,dispatch) {
+  return getQQRecommendList().then(v => {
+    resolve(v);
     dispatch({
-      type:FETCH_SUCCESS_NOVELLIST,
-      payLoad: v.data
-    });
-
-    dispatch({
-      type: FETCH_END
-    });
-  }).catch(() => {
-    dispatch({
-      type: FETCH_END
+      type: FETCH_SUCCESS_RECOMMENTLIST,
+      payLoad: v
     });
   })
 }
+function getHS(resolve, reject,dispatch) {
+  return getRecommendList().then(v => {
+    dispatch({
+      type: FETCH_SUCCESS_RECOMMENTLIST,
+      payLoad: v.data
+    });
+  })
+}
+
+
+let initIndexPageData = (arg) => (dispatch) => {
+  return new Promise((resolve, reject) => {
+    dispatch({
+      type: FETCH_START
+    });
+    getQQ(resolve,reject,dispatch).then(v => {
+      dispatch({
+        type: FETCH_END
+      });
+    }).catch(() => {
+      dispatch({
+        type: FETCH_END
+      });
+    })
+  })
+};
 const actions = {
   initIndexPageData,
-  removeItem:function(arg){
-    return function(dispatch){
-      dispatch({
-        type:REMOVE_ITEM,
-        payLoad:arg
-      })
+
+  removeItem: function (arg) {
+    return {
+      type: REMOVE_ITEM,
+      payLoad: arg
+    };
+  },
+  filterChange: function (arg) {
+    return {
+      type: FILTERCHANGE,
+      payLoad: arg
     }
   }
 };

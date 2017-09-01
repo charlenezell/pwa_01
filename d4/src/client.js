@@ -7,9 +7,9 @@ import configureStore from './stores';
 
 const store = configureStore({
   novelList:{},
-  root:{
-    fetchFlag:false
-  }
+  qqRecommandList:{},
+  fetchFlag:false,
+  filterText:""
 });
 
 ReactDOM.render(
