@@ -1,11 +1,13 @@
 require("react-hot-loader/patch")
+require("webpack-dev-server/client?http://0.0.0.0:8000/")
+require('webpack/hot/only-dev-server')
 import babelpolyfill from 'babel-polyfill';
 
 import { AppContainer } from 'react-hot-loader';
-import { initIndexPageDataSaga } from '../saga';
+import { initIndexPageDataSaga } from '../action';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import { Provider ,connect} from 'react-redux';
 import configureStore from '../store';
 import RecommandList from '../component/recommendList';
 import style from './index.scss';
@@ -17,24 +19,38 @@ const store = configureStore({
 
 class Index extends Component {
     componentDidMount() {
-        this.props.dispatch(initIndexPageDataSaga());
+        this.props.initPage();
     }
     render() {
         return <div className={style.className}>
             {
-                props.loading ? <div>loading</div> : ''
+                this.props.loading ? <div>loading</div> : ''
             }
-            <RecommandList  {...props} />
+            <RecommandList  {...this.props} />
             {/* <NovelList  {...props} /> */}
         </div>
     }
 }
 
+let Windex=connect((state)=>{
+   return {
+    qqRecommandList:state.qqRecommandList,
+    loading:state.fetchFlag,
+    filterText:state.filterText
+   }
+},(dispatch)=>{
+   return {
+    initPage:function(){
+      dispatch(initIndexPageDataSaga());
+    }
+   }
+})(Index);
+
 function render() {
     ReactDOM.render(
         <AppContainer>
             <Provider store={store}>
-                <Index />
+                <Windex />
             </Provider>
         </AppContainer>,
         document.getElementById('root')

@@ -1,7 +1,7 @@
 import {
   getRecommendList,
   getQQRecommendList
-} from 'da';
+} from '../da';
 
 import {
   FETCH_END,
