@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import babelpolyfill from 'babel-polyfill';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import App from './containers/App';

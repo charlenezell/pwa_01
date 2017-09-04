@@ -7,7 +7,7 @@ import {
 } from 'react-redux';
 
 import {
-  initIndexPageData,
+  initIndexPageDataSaga,
   removeItem
 } from '../actions/';
 
@@ -29,7 +29,7 @@ function mapDispatchToProp(dispatch){
       dispatch(removeItem(e))
     },
     initPage:function(){
-      dispatch(initIndexPageData());
+      dispatch(initIndexPageDataSaga());
     }
   }
 }

@@ -1,5 +1,6 @@
 {
   "globalDependencies": {
+    "redux-saga": "registry:dt/redux-saga#0.9.1+20160703120921",
     "redux-thunk": "registry:dt/redux-thunk#2.1.0+20160703120921"
   }
 }

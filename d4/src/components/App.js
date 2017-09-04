@@ -10,53 +10,7 @@ export default (props) => <div className={style.className}>
   {
     props.loading ? <div>loading</div> : ''
   }
-  {/* <SearchBar /> */}
-  <Infinite containerHeight={500} elementHeight={40}>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  <div className="one">123</div>
-  </Infinite>
-  {/* <RecommandList  {...props} /> */}
+  <SearchBar />
+  <RecommandList  {...props} />
   {/* <NovelList  {...props} /> */}
 </div>

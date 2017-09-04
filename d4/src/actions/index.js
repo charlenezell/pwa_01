@@ -9,48 +9,18 @@ import {
   FETCH_SUCCESS_NOVELLIST,
   REMOVE_ITEM,
   FILTERCHANGE,
-  FETCH_SUCCESS_RECOMMENTLIST
+  FETCH_SUCCESS_RECOMMENTLIST,
+  INIT_PAGEDATA
 } from './const.js';
 
-
-function getQQ(resolve, reject,dispatch) {
-  return getQQRecommendList().then(v => {
-    resolve(v);
-    dispatch({
-      type: FETCH_SUCCESS_RECOMMENTLIST,
-      payLoad: v
-    });
-  })
-}
-function getHS(resolve, reject,dispatch) {
-  return getRecommendList().then(v => {
-    dispatch({
-      type: FETCH_SUCCESS_RECOMMENTLIST,
-      payLoad: v.data
-    });
-  })
-}
-
-
-let initIndexPageData = (arg) => (dispatch) => {
-  return new Promise((resolve, reject) => {
-    dispatch({
-      type: FETCH_START
-    });
-    getQQ(resolve,reject,dispatch).then(v => {
-      dispatch({
-        type: FETCH_END
-      });
-    }).catch(() => {
-      dispatch({
-        type: FETCH_END
-      });
-    })
-  })
+let initIndexPageDataSaga = () => {
+  return {
+    type: INIT_PAGEDATA
+  };
 };
-const actions = {
-  initIndexPageData,
 
+const actions = {
+  initIndexPageDataSaga,
   removeItem: function (arg) {
     return {
       type: REMOVE_ITEM,

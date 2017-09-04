@@ -5,7 +5,7 @@ let style = {
 const RecommandList = ({ qqRecommandList = {}, filterText }) => {
     let list = Object.keys(qqRecommandList).map(v => qqRecommandList[v]);
     let c = filterText.trim() === "" ? list : list.filter(v => {
-        return v.title.includes(filterText);
+        return v.content.title.includes(filterText);
     });
     return <div className="novelList">{
         c.map(v =>
