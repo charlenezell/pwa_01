@@ -1,0 +1,17 @@
+{
+    "presets": [
+      ["es2015", { "modules": false }],
+      "react",
+      "airbnb"
+    ],
+    "plugins": [
+
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+
+        ]
+      }
+    }
+  }
