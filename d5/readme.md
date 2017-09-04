@@ -134,3 +134,80 @@ function* watchAuth() {
   }
 }
 ```
+
+
+# some thing about generator and async
+
+```javascript
+function getData(userId) {
+    return new Promise((a,b)=>{
+        if (true) {
+            throw "xiaoming";
+            a({
+                status: "i'm good"
+            })
+        }
+    }
+    )
+}
+
+function sleep(t){
+    return new Promise((a,b)=>{
+        setTimeout(()=>{
+            a();
+        },t)
+    });
+}
+
+ async function getData2() {
+      console.log("waiting")
+      await sleep(3000);//await for promise
+      console.log("after 3s")
+//       throw new Error("heelo");
+      return "i am awake";
+}
+async function main2(){
+    try{
+      let c=await getData2();//await for async function
+      console.log(c);
+    }catch(e){
+        console.log("error",e);
+    }
+}
+
+
+
+function run(main) {
+    var c = main(),g
+    (function iter(i) {
+         g = c.next(i);
+//         console.log("it");
+        if(!g.done){
+          if (g.value.then) {
+            g.value.then(iter).catch((d)=>{
+                c.throw(d)
+            })
+          } else {
+              iter(g.value);
+          }
+        }
+    })();
+}
+
+
+main2();
+
+run(function *main() {
+    var userId = 123;
+    try {
+        let c = yield getData(userId);
+//         console.log(c.status);
+        let w= yield 123;
+        console.log(w,c);
+    } catch (e) {
+        console.log('error', e);
+    }
+
+});
+
+```
