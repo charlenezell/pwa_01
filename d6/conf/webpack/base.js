@@ -21,7 +21,8 @@ module.exports = {
     entry: allEntryScript(),
     output: {
         filename: '[name].js',
-        path: fromBuildRoot('dist')
+        path: fromBuildRoot('dist'),
+        publicPath: '/bundles/',
     },
     module: {
         rules: [{
@@ -30,16 +31,13 @@ module.exports = {
         },
         {
             test: /\.css$/,
-            loaders: [{
+            use: [{
                 loader: 'style-loader'
-            },
-            {
+            }, {
                 loader: 'css-loader'
-            },
-            {
+            }, {
                 loader: 'postcss-loader'
-            }
-            ]
+            }]
         }, {
             test: /\.(png|jpg|gif|mp4|ogg|svg|woff|woff2)$/,
             loader: 'file-loader'
@@ -56,7 +54,7 @@ module.exports = {
             },
             {
                 loader: 'sass-loader'
-            },
+            }
             ]
         }, {
             test: /\.json$/,
@@ -82,6 +80,7 @@ module.exports = {
         publicPath: '/bundles/',
         // historyApiFallback: true,
         hot: true,
+        // hotOnly:true,
         inline: true,
         port: 8000,
         proxy: {
