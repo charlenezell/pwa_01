@@ -1,4 +1,5 @@
-import React from 'react';
+// import React from 'react';
+import { h, render, Component } from 'preact';
 import './css.scss';
 const RecommandList = ({ qqRecommandList = {}, filterText = "" }) => {
     let list = Object.keys(qqRecommandList).map(v => qqRecommandList[v]);
@@ -8,7 +9,7 @@ const RecommandList = ({ qqRecommandList = {}, filterText = "" }) => {
     return <div className="novelList" >{
         c.map(v =>
             <div className="novelItem" data-nid={v.id} key={v.id}>
-                {/* <img src={v.content.img} alt="" /> */}
+                <img src={v.content.img} alt="" />
                 <span>{v.content.title}</span>
                 <span>{v.userInfo.newUserName}</span>
             </div>

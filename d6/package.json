@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve:dev": "webpack-dev-server --open --env dev",
-    "start": "npm run serve:dev"
+    "serve": "webpack-dev-server --open --env dev --config webpack.dev.js",
+    "start": "npm run serve",
+    "build": "webpack --progress --bail -p --env prod --config webpack.prod.js",
+    "genA": "webpack --env prod --profile --json --bail --config webpack.prod.js > stats.json",
+    "showA": "webpack-bundle-analyzer stats.json",
+    "latestA": "npm run genA&& npm run showA"
   },
   "author": "",
   "license": "ISC",
@@ -27,13 +31,18 @@
     "react-hot-loader": "^3.0.0-beta.7",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
+    "uglifyjs-webpack-plugin": "^0.4.6",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1"
+    "webpack-bundle-analyzer": "^2.9.0",
+    "webpack-dev-server": "^2.7.1",
+    "webpack-merge": "^4.1.0"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "normalize.css": "^7.0.0",
+    "preact": "^8.2.5",
+    "preact-compat": "^3.17.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",

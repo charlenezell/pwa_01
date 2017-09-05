@@ -1,10 +1,9 @@
-require("react-hot-loader/patch")
-import babelpolyfill from 'babel-polyfill';
+
+import 'babel-polyfill';
 
 import { AppContainer } from 'react-hot-loader';
-
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import { h, render, Component } from 'preact';
+// import ReactDOM from 'react-dom';
 import { Provider ,connect} from 'react-redux';
 import configureStore from '../store';
 import Windex from '../component/index';
@@ -17,22 +16,22 @@ const store = configureStore({
     filterText: ""
 })
 
-function render(Component) {
-    ReactDOM.render(
-        <AppContainer>
+function irender(Component) {
+    render(
+        (<AppContainer>
             <Provider store={store}>
-                <Component />
+                <Component ></Component>
             </Provider>
-        </AppContainer>,
+    </AppContainer>),
         document.getElementById('root')
     );
 }
 
-render(Windex);
+irender(Windex);
 
 if (module.hot) {
     module.hot.accept('../component/index', () => {
-        console.log("hello")
-        render(Windex);
+        let a=require("../component/index")
+        irender(a);
     });
 }

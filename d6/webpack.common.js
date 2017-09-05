@@ -4,7 +4,7 @@ const glob = require("glob");
 
 const webpack = require('webpack');
 
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
 
 function fromSrcRoot(target) {
     return path.join("src", target);
@@ -17,13 +17,13 @@ function fromBuildRoot(target) {
 function allEntryScript() {
     let t = {}
     glob.sync(fromSrcRoot("entry") + "/*.js").forEach(v => {
-        w=[path.resolve("./", v)];
-        if(process.env.NODE_ENV=="dev"){
-            w=['webpack/hot/only-dev-server','react-hot-loader/patch'].concat(w);
+        w = [path.resolve("./", v)];
+        if (process.env.NODE_ENV == "dev") {
+            w = ['webpack/hot/only-dev-server', 'react-hot-loader/patch'].concat(w);
         }
-        t[path.basename(v, '.js')] =w;
+        t[path.basename(v, '.js')] = w;
     });
-    t.common=["babel-polyfill"]
+    t.common = ["babel-polyfill"]
     return t;
 }
 module.exports = {
@@ -74,7 +74,10 @@ module.exports = {
 
         // options for resolving module requests
         // (does not apply to resolving to loaders)
-
+        // "alias":{
+        //     "react":"preact-compat",
+        //     "react-dom":"preact-compat"
+        // },
         modules: [
             "node_modules",
             path.resolve(__dirname, "app")
@@ -100,8 +103,8 @@ module.exports = {
             }
         }
     },
-    plugins:[
-        new UglifyJSPlugin(),
+    plugins: [
+
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
             minChunks: Infinity

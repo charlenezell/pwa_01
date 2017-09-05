@@ -19,6 +19,7 @@ import {
   FILTERCHANGE,
   FETCH_SUCCESS_RECOMMENTLIST
 } from "../action/const.js";
+
 const reducers = {
   fetchFlag: function (state = false, action) {
     switch (action.type) {
