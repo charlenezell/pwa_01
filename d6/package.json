@@ -40,9 +40,8 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "isomorphic-fetch": "^2.2.1",
     "normalize.css": "^7.0.0",
-    "preact": "^8.2.5",
-    "preact-compat": "^3.17.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",

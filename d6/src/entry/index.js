@@ -1,9 +1,6 @@
-
-import 'babel-polyfill';
-
 import { AppContainer } from 'react-hot-loader';
-import { h, render, Component } from 'preact';
-// import ReactDOM from 'react-dom';
+import {  Component } from 'react';
+import ReactDOM from 'react-dom';
 import { Provider ,connect} from 'react-redux';
 import configureStore from '../store';
 import Windex from '../component/index';
@@ -17,12 +14,12 @@ const store = configureStore({
 })
 
 function irender(Component) {
-    render(
-        (<AppContainer>
+    ReactDOM.render(
+        <AppContainer>[Error Happened](http://--config webpack.dev.js)
             <Provider store={store}>
                 <Component ></Component>
             </Provider>
-    </AppContainer>),
+    </AppContainer>,
         document.getElementById('root')
     );
 }

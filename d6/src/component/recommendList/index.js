@@ -1,5 +1,5 @@
 // import React from 'react';
-import { h, render, Component } from 'preact';
+import {  Component } from 'react';
 import './css.scss';
 const RecommandList = ({ qqRecommandList = {}, filterText = "" }) => {
     let list = Object.keys(qqRecommandList).map(v => qqRecommandList[v]);

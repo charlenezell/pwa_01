@@ -1,5 +1,5 @@
 import { Provider ,connect} from 'react-redux';
-import { h, render, Component } from 'preact';
+import {render, Component } from 'react';
 import RecommandList from '../recommendList/';
 import style from './index.scss';
 import { initIndexPageDataSaga } from '../../action';

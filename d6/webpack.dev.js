@@ -5,6 +5,27 @@ const merge = require('webpack-merge');
 const webpack = require('webpack');
 
 module.exports = merge(common, {
+    devServer: {
+        contentBase: './pages/',
+        publicPath: '/bundles/',
+        // historyApiFallback: true,
+        hot: true,
+        // hotOnly:true,
+        inline: true,
+        port: 8000,
+        proxy: {
+            '/qq': {
+                target: 'http://qq.100bt.com',
+                pathRewrite: { '^/qq': '' },
+                changeOrigin: true
+            },
+            '/hs': {
+                target: 'http://www.hushuo.bt',
+                pathRewrite: { '^/hs': '' },
+                changeOrigin: true
+            }
+        }
+    },
     plugins: [
 
         new webpack.DefinePlugin({

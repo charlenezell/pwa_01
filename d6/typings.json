@@ -4,6 +4,7 @@
     "webpack-merge": "registry:dt/webpack-merge#0.0.0+20161121205806"
   },
   "globalDependencies": {
+    "isomorphic-fetch": "registry:dt/isomorphic-fetch#0.0.0+20170223183302",
     "redux": "registry:dt/redux#3.5.2+20160703092728",
     "redux-thunk": "registry:dt/redux-thunk#2.1.0+20160703120921"
   }

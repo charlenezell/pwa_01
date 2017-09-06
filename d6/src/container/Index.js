@@ -1,6 +1,6 @@
 import  {
   Component
-} from 'preact';
+} from 'react';
 
 import {
   connect

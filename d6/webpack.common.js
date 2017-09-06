@@ -19,11 +19,12 @@ function allEntryScript() {
     glob.sync(fromSrcRoot("entry") + "/*.js").forEach(v => {
         w = [path.resolve("./", v)];
         if (process.env.NODE_ENV == "dev") {
-            w = ['webpack/hot/only-dev-server', 'react-hot-loader/patch'].concat(w);
+            w = ['webpack-dev-server/client?http://0.0.0.0:8000/','webpack/hot/only-dev-server', 'react-hot-loader/patch'].concat(w);
         }
         t[path.basename(v, '.js')] = w;
     });
-    t.common = ["babel-polyfill"]
+    // t.polyfills = ["babel-polyfill","isomorphic-fetch"];
+    // t.reactlibs = ["react","react-dom","redux","react-redux","redux-saga","redux-thunk"];
     return t;
 }
 module.exports = {
@@ -87,27 +88,15 @@ module.exports = {
         extensions: [".js", ".json", ".jsx", ".css"]
         // extensions that are used
     },
-    devServer: {
-        contentBase: './pages/',
-        publicPath: '/bundles/',
-        // historyApiFallback: true,
-        hot: true,
-        // hotOnly:true,
-        inline: true,
-        port: 8000,
-        proxy: {
-            '/qq': {
-                target: 'http://qq.100bt.com',
-                pathRewrite: { '^/qq': '' },
-                changeOrigin: true
-            }
-        }
-    },
+
     plugins: [
 
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'common',
-            minChunks: Infinity
-        })
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     names: ['polyfills','reactlibs'],
+        //     minChunks: Infinity
+        // }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'common'
+        // })
     ]
 }

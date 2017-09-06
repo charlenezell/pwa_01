@@ -5,8 +5,8 @@
       "airbnb"
     ],
     "plugins": [
-      "react-hot-loader/babel",
-      ["transform-react-jsx", { "pragma": "h" }]
+      "react-hot-loader/babel"/* ,
+      ["transform-react-jsx", { "pragma": "h" }] */
     ],
     "env": {
       "test": {
