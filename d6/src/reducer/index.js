@@ -38,31 +38,11 @@ const reducers = {
       return state;
     }
   },
-  novelList: function (state = {}, action) {
-    switch (action.type) {
-      case REMOVE_ITEM:
-        let c = { ...state };
-        delete c[action.payLoad];
-        return c;
-      case FETCH_SUCCESS_NOVELLIST:
-        let g = {};
-        action.payLoad.forEach(v => {
-          g[v.id] = v;
-        });
-        let ccc = {
-          ...state,
-          ...g
-        }
-        return ccc;
-      default:
-        return state;
-    }
-  },
   qqRecommandList:(state={},action)=>{
     switch (action.type) {
       case FETCH_SUCCESS_RECOMMENTLIST:
         let g = {};
-        action.payLoad.recomments.forEach(v => {
+        action.payLoad.data.datas.forEach(v => {
           g[v.id] = v;
         });
         let ccc = {

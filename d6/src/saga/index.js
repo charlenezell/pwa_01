@@ -1,6 +1,6 @@
 import {delay} from 'redux-saga';
 import { takeLatest, put, call } from 'redux-saga/effects';
-import { getQQRecommendList } from '../da';
+import { getQQRecommendList ,getEditorList} from '../da';
 import {
     INIT_PAGEDATA,
     FETCH_START,
@@ -14,7 +14,7 @@ function* fetchUser() {
 }
 function * initPageData(){
     yield put({ type:FETCH_START });
-    let userInfo=yield call(getQQRecommendList);
+    let userInfo=yield call(getEditorList);
     // yield delay(5000);
     yield put({
         type:FETCH_SUCCESS_RECOMMENTLIST,

@@ -36,5 +36,5 @@ module.exports = merge(common, {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin()
     ],
-    devtool: 'inline-source-map'
+    devtool: 'source-map'
 })

@@ -1,5 +1,5 @@
 import { AppContainer } from 'react-hot-loader';
-import {  Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider ,connect} from 'react-redux';
 import configureStore from '../store';
@@ -15,7 +15,7 @@ const store = configureStore({
 
 function irender(Component) {
     ReactDOM.render(
-        <AppContainer>[Error Happened](http://--config webpack.dev.js)
+        <AppContainer>
             <Provider store={store}>
                 <Component ></Component>
             </Provider>
