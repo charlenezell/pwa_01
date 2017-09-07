@@ -2,8 +2,6 @@
 import React, { Component } from 'react';
 import style from './css.scss';
 import util from '../../util';
-import Selection from 'react-selection';
-// import from '../../../node_modules/react-selection/dist/react-selection.min.js';
 const afterSelect = (selectedTargets) => {
     const hasSelected = selectedTargets.length
 }
@@ -27,11 +25,11 @@ const WorkList = ({ workList = {}, filterText = "", changeItemStateHandler, tk, 
             <td>排名</td>
             <td>插入时间</td>
         </tr>
-        <Selection target=".target" afterSelect={this.afterSelect}>
+
             {
                 list.length > 0 ?
                     list.map(v =>
-                        <tr className={style.item + " target"} data-nid={v.id} key={v.id}>
+                        <tr className={style.item} data-nid={v.id} key={v.id}>
                             <td>{v.id}</td>
                             <td>{v.ddId}</td>
                             <td>{v.inviterDdId}</td>
@@ -58,7 +56,7 @@ const WorkList = ({ workList = {}, filterText = "", changeItemStateHandler, tk, 
                         </tr>
                     ) : (<tr><td>sori,列表为空..</td></tr>)
             }
-        </Selection></table>
+        </table>
 };
 
 export default WorkList;
