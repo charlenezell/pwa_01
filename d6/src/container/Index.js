@@ -16,7 +16,7 @@ import Main from '../components/App';
 function mapStateToProps(state) {
   const props = {
     // novelList:state.novelList,
-    qqRecommandList:state.qqRecommandList,
+    workList:state.workList,
     loading:state.fetchFlag,
     filterText:state.filterText
   };

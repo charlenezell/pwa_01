@@ -80,8 +80,7 @@ module.exports = {
         //     "react-dom":"preact-compat"
         // },
         modules: [
-            "node_modules",
-            path.resolve(__dirname, "app")
+            "node_modules"
         ],
         // directories where to look for modules
 

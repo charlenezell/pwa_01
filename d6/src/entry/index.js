@@ -8,9 +8,18 @@ import Windex from '../component/index';
 
 
 const store = configureStore({
-    qqRecommandList: {},
+    workList: {},
     fetchFlag: false,
-    filterText: ""
+    filter:{
+        stageType:"",
+        offset:0,
+        limit:100,
+        ddId:"",
+        dataStatus:"",
+        sortType:0,
+        actStoryId:""
+    },
+    token:""
 })
 
 function irender(Component) {

@@ -17,10 +17,20 @@ import {
   FETCH_SUCCESS_NOVELLIST,
   REMOVE_ITEM,
   FILTERCHANGE,
-  FETCH_SUCCESS_RECOMMENTLIST
+  FETCH_SUCCESS_RECOMMENTLIST,
+  SAVE_TOKEN,
+  FILTERINPUTCHANGE,
+  UPDATEITEMSTATUS
 } from "../action/const.js";
 
 const reducers = {
+  token:function(state="",action){
+    if(action.type===SAVE_TOKEN){
+      return action.payLoad;
+    }else{
+      return state;
+    }
+  },
   fetchFlag: function (state = false, action) {
     switch (action.type) {
       case FETCH_END:
@@ -31,25 +41,35 @@ const reducers = {
         return state;
     }
   },
-  filterText: (state = "", action) => {
+  filter: (state = {}, action) => {
     if (action.type === FILTERCHANGE) {
-      return action.payLoad;
-    } else {
+      return {...state,...action.payLoad};
+    } else if(action.type==FILTERINPUTCHANGE){
+      return {
+        ...state,...{
+          [action.payLoad.name]:action.payLoad.value
+        }
+      }
+    }else{
       return state;
     }
   },
-  qqRecommandList:(state={},action)=>{
+  workList:(state={},action)=>{
     switch (action.type) {
       case FETCH_SUCCESS_RECOMMENTLIST:
         let g = {};
-        action.payLoad.data.datas.forEach(v => {
+        action.payLoad.data.datas.forEach((v,k) => {
           g[v.id] = v;
+          g[v.id]["_order"]=k;
         });
-        let ccc = {
-          ...state,
-          ...g
+        return g;
+      case UPDATEITEMSTATUS:
+        let c={...state};
+        c[action.payLoad.id]={
+          ...c[action.payLoad.id],
+          [action.payLoad.type]:action.payLoad.value
         }
-        return ccc;
+        return c;
       default:
         return state
     }

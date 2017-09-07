@@ -1,7 +1,3 @@
-import {
-  getRecommendList,
-  getQQRecommendList
-} from '../da';
 
 import {
   FETCH_END,
@@ -10,7 +6,9 @@ import {
   REMOVE_ITEM,
   FILTERCHANGE,
   FETCH_SUCCESS_RECOMMENTLIST,
-  INIT_PAGEDATA
+  INIT_PAGEDATA,
+  FILTERINPUTCHANGE,
+  UPDATEITEMSTATUS
 } from './const.js';
 
 let initIndexPageDataSaga = () => {
@@ -21,16 +19,26 @@ let initIndexPageDataSaga = () => {
 
 const actions = {
   initIndexPageDataSaga,
-  removeItem: function (arg) {
-    return {
-      type: REMOVE_ITEM,
-      payLoad: arg
-    };
-  },
   filterChange: function (arg) {
     return {
       type: FILTERCHANGE,
       payLoad: arg
+    }
+  },
+  filterInputChange:function (arg){
+    return {
+      type:FILTERINPUTCHANGE,
+      payLoad:arg
+    }
+  },
+  updataItemStatus:function(id,value,type){
+    return {
+      type:UPDATEITEMSTATUS,
+      payLoad:{
+        id,
+        value,
+        type
+      }
     }
   }
 };

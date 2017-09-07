@@ -1,0 +1,31 @@
+:local .list{
+    border-collapse: collapse;
+}
+:local .item{
+    &:hover{
+     background-color:rgba(255, 152, 0, 0.23);
+    }
+}
+:local .item>*{
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+:local .clickable{
+    position: relative;
+    background-color: #ccc;
+    cursor: pointer;
+    padding:0 20px;
+    text-align: center;
+    &:after{
+        content:"←";
+        position: absolute;
+        right:0;
+        top:0;
+    }
+    &:before{
+        content:"→";
+        position: absolute;
+        left:0;
+        top:0;
+    }
+}
