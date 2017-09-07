@@ -49,12 +49,179 @@ export const getEditorList = (_option) => {
     }
   });
 
-  // return Promise.resolve({
-  //   data:{
-  //     datas:[{id:213,ddId:2313}]
-  //   }
-  // })
-  return fetch(url).then(res => res.json())
+  return Promise.resolve({
+    "code": 0,
+    "popups": null,
+    "data": {
+        "offset": 0,
+        "limit": 10,
+        "totalCount": 15,
+        "datas": [
+            {
+                "id": 1,
+                "ddId": 10007234,
+                "inviterDdId": 10007234,
+                "qq": "100000000",
+                "name": "百田小说",
+                "actStoryId": 1,
+                "avatar": "http://img3.a0bi.com/upload/uc/20151209/1449663779958_3.jpg",
+                "detail": "testdetail",
+                "voiceUrl": "http://baidu.com/a.mp3",
+                "dataStatus": 2,
+                "stage1Vote": 30,
+                "stage2Vote": 0,
+                "rewardRank": 0,
+                "insertTime": "2017-09-07 20:17:53"
+            },
+            {
+                "id": 5,
+                "ddId": 10007234,
+                "inviterDdId": 10007234,
+                "qq": "100000000",
+                "name": "百田小说",
+                "actStoryId": 2,
+                "avatar": "http://img3.a0bi.com/upload/uc/20151209/1449663779958_3.jpg",
+                "detail": "testdetail2",
+                "voiceUrl": "http://baidu.com/a.mp3",
+                "dataStatus": 3,
+                "stage1Vote": 0,
+                "stage2Vote": 0,
+                "rewardRank": 0,
+                "insertTime": "2017-09-07 20:18:37"
+            },
+            {
+                "id": 2,
+                "ddId": 10007234,
+                "inviterDdId": 10007234,
+                "qq": "100000000",
+                "name": "百田小说",
+                "actStoryId": 1,
+                "avatar": "http://img3.a0bi.com/upload/uc/20151209/1449663779958_3.jpg",
+                "detail": "testdetail",
+                "voiceUrl": "http://baidu.com/a.mp3",
+                "dataStatus": 3,
+                "stage1Vote": 60,
+                "stage2Vote": 23,
+                "rewardRank": 0,
+                "insertTime": "2017-09-07 20:18:36"
+            },
+            {
+                "id": 9,
+                "ddId": 10007234,
+                "inviterDdId": 10007234,
+                "qq": "100000000",
+                "name": "百田小说",
+                "actStoryId": 3,
+                "avatar": "http://img3.a0bi.com/upload/uc/20151209/1449663779958_3.jpg",
+                "detail": "testdetail223",
+                "voiceUrl": "http://baidu.com/a.mp3",
+                "dataStatus": 1,
+                "stage1Vote": 0,
+                "stage2Vote": 0,
+                "rewardRank": 0,
+                "insertTime": "2017-09-07 19:31:40"
+            },
+            {
+                "id": 12,
+                "ddId": 10007234,
+                "inviterDdId": 10007234,
+                "qq": "100000000",
+                "name": "百田小说",
+                "actStoryId": 4,
+                "avatar": "http://img3.a0bi.com/upload/uc/20151209/1449663779958_3.jpg",
+                "detail": "testdetail3",
+                "voiceUrl": "http://baidu.com/a.mp3",
+                "dataStatus": 2,
+                "stage1Vote": 0,
+                "stage2Vote": 0,
+                "rewardRank": 0,
+                "insertTime": "2017-09-07 20:17:54"
+            },
+            {
+                "id": 15,
+                "ddId": 10007712,
+                "inviterDdId": 2222222,
+                "qq": "111111111",
+                "name": "小编花花",
+                "actStoryId": 1,
+                "avatar": "http://www.100bt.com/resource/uc/images/defaultphoto.png",
+                "detail": "描述啊啊啊",
+                "voiceUrl": "https://www.bilibili.com/video/av14165866/",
+                "dataStatus": 0,
+                "stage1Vote": 0,
+                "stage2Vote": 0,
+                "rewardRank": 0,
+                "insertTime": "2017-09-07 16:20:17"
+            },
+            {
+                "id": 4,
+                "ddId": 10007234,
+                "inviterDdId": 10007234,
+                "qq": "100000000",
+                "name": "百田小说",
+                "actStoryId": 2,
+                "avatar": "http://img3.a0bi.com/upload/uc/20151209/1449663779958_3.jpg",
+                "detail": "testdetail2",
+                "voiceUrl": "http://baidu.com/a.mp3",
+                "dataStatus": 3,
+                "stage1Vote": 80,
+                "stage2Vote": 0,
+                "rewardRank": 0,
+                "insertTime": "2017-09-07 20:18:37"
+            },
+            {
+                "id": 6,
+                "ddId": 10007234,
+                "inviterDdId": 10007234,
+                "qq": "100000000",
+                "name": "百田小说",
+                "actStoryId": 2,
+                "avatar": "http://img3.a0bi.com/upload/uc/20151209/1449663779958_3.jpg",
+                "detail": "testdetail2",
+                "voiceUrl": "http://baidu.com/a.mp3",
+                "dataStatus": 0,
+                "stage1Vote": 0,
+                "stage2Vote": 0,
+                "rewardRank": 0,
+                "insertTime": "2017-09-06 11:32:45"
+            },
+            {
+                "id": 8,
+                "ddId": 10007234,
+                "inviterDdId": 10007234,
+                "qq": "100000000",
+                "name": "百田小说",
+                "actStoryId": 3,
+                "avatar": "http://img3.a0bi.com/upload/uc/20151209/1449663779958_3.jpg",
+                "detail": "testdetail22",
+                "voiceUrl": "http://baidu.com/a.mp3",
+                "dataStatus": 0,
+                "stage1Vote": 0,
+                "stage2Vote": 0,
+                "rewardRank": 0,
+                "insertTime": "2017-09-06 11:32:53"
+            },
+            {
+                "id": 3,
+                "ddId": 10007234,
+                "inviterDdId": 10007234,
+                "qq": "100000000",
+                "name": "百田小说",
+                "actStoryId": 1,
+                "avatar": "http://img3.a0bi.com/upload/uc/20151209/1449663779958_3.jpg",
+                "detail": "testdetail2",
+                "voiceUrl": "http://baidu.com/a.mp3",
+                "dataStatus": 3,
+                "stage1Vote": 60,
+                "stage2Vote": 0,
+                "rewardRank": 0,
+                "insertTime": "2017-09-07 20:18:36"
+            }
+        ],
+        "totalPage": 2
+    }
+})
+  // return fetch(url).then(res => res.json())
 }
 
 
