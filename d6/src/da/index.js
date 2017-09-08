@@ -7,7 +7,10 @@ import { hsURLBase } from '../env';
 
 
 export const getToken=()=>{
-  return fetchJsonp('http://service.100bt.com/onlineuser/getCookieInfo.jsonp').then(v=>v.json());
+//   return fetchJsonp('http://service.100bt.com/onlineuser/getCookieInfo.jsonp').then(v=>v.json());
+return Promise.resolve({
+    BTValue:"123"
+});
 }
 
 

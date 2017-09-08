@@ -47,6 +47,7 @@
     "qs": "^6.5.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-ds": "^1.7.2",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-saga": "^0.15.6",

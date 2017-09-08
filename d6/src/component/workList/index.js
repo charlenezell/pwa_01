@@ -2,12 +2,13 @@
 import React, { Component } from 'react';
 import style from './css.scss';
 import util from '../../util';
-const afterSelect = (selectedTargets) => {
-    const hasSelected = selectedTargets.length
-}
-const WorkList = ({ workList = {}, filterText = "", changeItemStateHandler, tk, changeRankStateHandler, changeVoteStateHandler }) => {
-    let list = Object.keys(workList).map(v => workList[v]).sort((a, b) => a._order > b._order ? 1 : -1);
-    return <table className={style.list} >
+import Selection from 'react-ds';
+
+class WorkList extends Component{
+    render(){
+        let { workList = {}, filterText = "", changeItemStateHandler, tk, changeRankStateHandler, changeVoteStateHandler }=this.props;
+        let list = Object.keys(workList).map(v => workList[v]).sort((a, b) => a._order > b._order ? 1 : -1);
+        return <table className={style.list} >
         <tr className={style.item} style={{ "fontWeight": "bold" }}>
             <td>id</td>
             <td>多多号</td>
@@ -38,7 +39,7 @@ const WorkList = ({ workList = {}, filterText = "", changeItemStateHandler, tk, 
                             <td>{v.actStoryId}</td>
                             <td><img src="{v.avatar}" alt="" /></td>
                             <td>{v.detail}</td>
-                            <td>{v.voiceUrl}</td>
+                            <td><a href={v.voiceUrl} target="_blank">声音链接</a></td>
                             {/* <span>{v.stageType}</span> */}
                             <td className={style.clickable}>
                                 <form data-itemid={v.id} action="" onChange={(e) => { e.preventDefault(); changeItemStateHandler(tk, e.currentTarget.dataset.itemid, util.parseFormData(e)); }}>
@@ -57,6 +58,8 @@ const WorkList = ({ workList = {}, filterText = "", changeItemStateHandler, tk, 
                     ) : (<tr><td>sori,列表为空..</td></tr>)
             }
         </table>
-};
+    }
+}
+
 
 export default WorkList;

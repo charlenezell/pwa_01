@@ -1,5 +1,6 @@
 :local .list{
     border-collapse: collapse;
+    width:1280px;
 }
 :local .item{
     &:hover{
@@ -20,12 +21,14 @@
         content:"←";
         position: absolute;
         right:0;
-        top:0;
+        top:50%;
+        margin-top: -6px;
     }
     &:before{
         content:"→";
         position: absolute;
         left:0;
-        top:0;
+        top:50%;
+        margin-top: -6px;
     }
 }
