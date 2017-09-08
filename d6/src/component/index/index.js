@@ -52,6 +52,8 @@ let Windex=connect((state)=>{
             v=>{
                 if(v.code==0){
                     dispatch(updataItemStatus(id,data.dataStatus,"dataStatus"));
+                }else{
+                    alert(v.detail)
                 }
             }
         )
@@ -65,6 +67,8 @@ let Windex=connect((state)=>{
                 v=>{
                     if(v.code==0){
                         dispatch(updataItemStatus(id,vote,`stage${stageId}Vote`));
+                    }else{
+                        alert(v.detail)
                     }
                 }
             )
@@ -79,6 +83,8 @@ let Windex=connect((state)=>{
                 v=>{
                     if(v.code==0){
                         dispatch(updataItemStatus(id,newRank,"rewardRank"));
+                    }else{
+                        alert(v.detail)
                     }
                 }
             )

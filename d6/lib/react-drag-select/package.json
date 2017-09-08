@@ -1,0 +1,69 @@
+{
+  "_from": "react-drag-select",
+  "_id": "react-drag-select@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-luTQRXw8ut4EQsmR9GzXs22zSMo=",
+  "_location": "/react-drag-select",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "react-drag-select",
+    "name": "react-drag-select",
+    "escapedName": "react-drag-select",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-drag-select/-/react-drag-select-1.0.0.tgz",
+  "_shasum": "96e4d0457c3cbade0442c991f46cd7b36db348ca",
+  "_spec": "react-drag-select",
+  "_where": "C:\\Users\\huangguangyao\\Desktop\\hello",
+  "author": {
+    "name": "pablofierro"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "reactify"
+      ]
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/pablofierro/react-drag-select/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "react": "^0.13.3"
+  },
+  "deprecated": false,
+  "description": "A React drag to select component",
+  "devDependencies": {
+    "browserify": "^11.0.1",
+    "reactify": "^1.1.1"
+  },
+  "homepage": "https://github.com/pablofierro/react-drag-select",
+  "keywords": [
+    "react",
+    "react-component",
+    "drag",
+    "select",
+    "ui"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "react-drag-select",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pablofierro/react-drag-select.git"
+  },
+  "scripts": {
+    "build-demo": "browserify ./sample/sample.jsx -o ./sample/sample.js"
+  },
+  "version": "1.0.0"
+}

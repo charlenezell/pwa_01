@@ -2,31 +2,33 @@
 import React, { Component } from 'react';
 import style from './css.scss';
 import util from '../../util';
-import Selection from 'react-ds';
+// import Selection  from 'react-drag-select';
+// import Button from 'material-ui/Button';
 
 class WorkList extends Component{
     render(){
-        let { workList = {}, filterText = "", changeItemStateHandler, tk, changeRankStateHandler, changeVoteStateHandler }=this.props;
+        let { workList = {},filter, changeItemStateHandler, tk, changeRankStateHandler, changeVoteStateHandler }=this.props;
         let list = Object.keys(workList).map(v => workList[v]).sort((a, b) => a._order > b._order ? 1 : -1);
         return <table className={style.list} >
+            <tbody>
         <tr className={style.item} style={{ "fontWeight": "bold" }}>
             <td>id</td>
-            <td>多多号</td>
+            <td style={{color:filter.ddId?'red':''}}>多多号</td>
             <td>邀请多多号</td>
             <td>qq</td>
             <td>名字</td>
-            <td>投稿类型</td>
+            <td style={{color:filter.actStoryId?'red':''}}>投稿类型</td>
             <td>头像</td>
             <td>详情</td>
             <td>声音地址</td>
             {/* <td>阶段（1=初赛，2=决赛，3=获奖名单）</td> */}
-            <td>状态（0=未审核，1=不通过，2=初赛，3=决赛，4=获奖）</td>
+            <td style={{color:filter.dataStatus?'red':''}}>状态（0=未审核，1=不通过，2=初赛，3=决赛，4=获奖）</td>
             <td>票数（阶段1）</td>
             <td>票数（阶段2）</td>
             <td>排名</td>
             <td>插入时间</td>
         </tr>
-
+        {/* <Selection> */}
             {
                 list.length > 0 ?
                     list.map(v =>
@@ -37,7 +39,7 @@ class WorkList extends Component{
                             <td>{v.qq}</td>
                             <td>{v.name}</td>
                             <td>{v.actStoryId}</td>
-                            <td><img src="{v.avatar}" alt="" /></td>
+                            <td><img src={v.avatar} alt="" /></td>
                             <td>{v.detail}</td>
                             <td><a href={v.voiceUrl} target="_blank">声音链接</a></td>
                             {/* <span>{v.stageType}</span> */}
@@ -57,6 +59,8 @@ class WorkList extends Component{
                         </tr>
                     ) : (<tr><td>sori,列表为空..</td></tr>)
             }
+            {/* </Selection> */}
+            </tbody>
         </table>
     }
 }
