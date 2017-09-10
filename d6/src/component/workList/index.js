@@ -2,66 +2,141 @@
 import React, { Component } from 'react';
 import style from './css.scss';
 import util from '../../util';
-// import Selection  from 'react-drag-select';
-// import Button from 'material-ui/Button';
 
-class WorkList extends Component{
-    render(){
-        let { workList = {},filter, changeItemStateHandler, tk, changeRankStateHandler, changeVoteStateHandler }=this.props;
+// import Selection  from 'react-drag-select';
+import RaisedButton from 'material-ui/RaisedButton';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import Avatar from 'material-ui/Avatar';
+import TextField from 'material-ui/TextField';
+
+import {
+    Table,
+    TableBody,
+    TableHeader,
+    TableHeaderColumn,
+    TableRow,
+    TableRowColumn,
+} from 'material-ui/Table';
+
+
+class WorkList extends Component {
+    shouldComponentUpdate(nextProp) {
+        if (this.props.workList !== nextProp.workList) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    render() {
+        let { workList = {}, filter, changeItemStateHandler, tk, changeRankStateHandler, changeVoteStateHandler, showDetail, handleTableSelectEvent } = this.props;
         let list = Object.keys(workList).map(v => workList[v]).sort((a, b) => a._order > b._order ? 1 : -1);
-        return <table className={style.list} >
-            <tbody>
-        <tr className={style.item} style={{ "fontWeight": "bold" }}>
-            <td>id</td>
-            <td style={{color:filter.ddId?'red':''}}>多多号</td>
-            <td>邀请多多号</td>
-            <td>qq</td>
-            <td>名字</td>
-            <td style={{color:filter.actStoryId?'red':''}}>投稿类型</td>
-            <td>头像</td>
-            <td>详情</td>
-            <td>声音地址</td>
-            {/* <td>阶段（1=初赛，2=决赛，3=获奖名单）</td> */}
-            <td style={{color:filter.dataStatus?'red':''}}>状态（0=未审核，1=不通过，2=初赛，3=决赛，4=获奖）</td>
-            <td>票数（阶段1）</td>
-            <td>票数（阶段2）</td>
-            <td>排名</td>
-            <td>插入时间</td>
-        </tr>
-        {/* <Selection> */}
-            {
-                list.length > 0 ?
-                    list.map(v =>
-                        <tr className={style.item} data-nid={v.id} key={v.id}>
-                            <td>{v.id}</td>
-                            <td>{v.ddId}</td>
-                            <td>{v.inviterDdId}</td>
-                            <td>{v.qq}</td>
-                            <td>{v.name}</td>
-                            <td>{v.actStoryId}</td>
-                            <td><img src={v.avatar} alt="" /></td>
-                            <td>{v.detail}</td>
-                            <td><a href={v.voiceUrl} target="_blank">声音链接</a></td>
-                            {/* <span>{v.stageType}</span> */}
-                            <td className={style.clickable}>
-                                <form data-itemid={v.id} action="" onChange={(e) => { e.preventDefault(); changeItemStateHandler(tk, e.currentTarget.dataset.itemid, util.parseFormData(e)); }}>
-                                    <input type="radio" name="dataStatus" id={v.id + "__dataStatus0"} value="0" checked={v.dataStatus == '0'} /><label htmlFor={v.id + "__dataStatus0"} >未审核</label>
-                                    <input type="radio" name="dataStatus" id={v.id + "__dataStatus1"} value="1" checked={v.dataStatus == '1'} /><label htmlFor={v.id + "__dataStatus1"} >不通过</label>
-                                    <input type="radio" name="dataStatus" id={v.id + "__dataStatus2"} value="2" checked={v.dataStatus == '2'} /><label htmlFor={v.id + "__dataStatus2"} >初赛</label>
-                                    <input type="radio" name="dataStatus" id={v.id + "__dataStatus3"} value="3" checked={v.dataStatus == '3'} /><label htmlFor={v.id + "__dataStatus3"} >决赛</label>
-                                    <input type="radio" name="dataStatus" id={v.id + "__dataStatus4"} value="4" checked={v.dataStatus == '4'} /><label htmlFor={v.id + "__dataStatus4"} >获奖</label>
-                                </form>
-                            </td>
-                            <td data-itemid={v.id} className={style.clickable} onClick={(e) => { e.preventDefault(); changeVoteStateHandler(tk, e.currentTarget.dataset.itemid, 1) }}>{v.stage1Vote}</td>
-                            <td data-itemid={v.id} className={style.clickable} onClick={(e) => { e.preventDefault(); changeVoteStateHandler(tk, e.currentTarget.dataset.itemid, 2) }}>{v.stage2Vote}</td>
-                            <td data-itemid={v.id} className={style.clickable} onClick={(e) => { e.preventDefault(); changeRankStateHandler(tk, e.currentTarget.dataset.itemid) }}>{v.rewardRank}</td>
-                            <td>{v.insertTime}</td>
-                        </tr>
-                    ) : (<tr><td>sori,列表为空..</td></tr>)
-            }
-            {/* </Selection> */}
-            </tbody>
-        </table>
+        return <Table className={style.list}
+            selectable={false}
+            multiSelectable={false}
+            onRowSelection={(selectRows) => {
+                handleTableSelectEvent(selectRows);
+            }}
+        >
+            <TableHeader className={style.item}
+                displaySelectAll={false}
+                enableSelectAll={false}
+                adjustForCheckbox={false}
+            >
+                <TableRow
+                selectable={false}
+                >
+                    <TableHeaderColumn className={style.tablerowcolumn}>用户</TableHeaderColumn>
+                    {/* <TableHeaderColumn style={{ color: filter.ddId ? 'red' : '' }}>多多号</TableHeaderColumn> */}
+                    {/* <TableHeaderColumn>邀请多多号</TableHeaderColumn> */}
+                    {/* <TableHeaderColumn>qq</TableHeaderColumn> */}
+                    {/* <TableHeaderColumn>名字</TableHeaderColumn> */}
+                    <TableHeaderColumn className={style.tablerowcolumn} >投稿类型</TableHeaderColumn>
+                    {/* <TableHeaderColumn>头像</TableHeaderColumn> */}
+                    {/* <TableHeaderColumn>详情</TableHeaderColumn> */}
+                    <TableHeaderColumn className={style.tablerowcolumn}>声音地址</TableHeaderColumn>
+                    {/* <TableHeaderColumn>阶段（1=初赛，2=决赛，3=获奖名单）</TableHeaderColumn> */}
+                    <TableHeaderColumn className={style.tablerowcolumn} >状态</TableHeaderColumn>
+                    <TableHeaderColumn className={style.tablerowcolumn}>票数（阶段1）</TableHeaderColumn>
+                    <TableHeaderColumn className={style.tablerowcolumn}>票数（阶段2）</TableHeaderColumn>
+                    <TableHeaderColumn className={style.tablerowcolumn}>排名</TableHeaderColumn>
+                    {/* <TableHeaderColumn>插入时间</TableHeaderColumn> */}
+                    <TableHeaderColumn className={style.tablerowcolumn}>操作</TableHeaderColumn>
+                </TableRow>
+            </TableHeader>
+            <TableBody
+                stripedRows
+                showRowHover
+                deselectOnClickaway={false}
+                displayRowCheckbox={false}
+            >
+                {/* <Selection> */}
+                {
+                    list.length > 0 ?
+                        list.map(v =>
+                            <TableRow className={style.item} data-nid={v.id} key={v.id}>
+                                <TableRowColumn className={style.tablerowcolumn}>
+                                    <div style={{ padding: "10px 0" }}>
+                                        <div><Avatar src={v.avatar} alt="" size={64} /></div>
+                                        <div>名字:{v.name}</div>
+                                        <div>多多号:{v.ddId}</div>
+                                        <div>作品id:{v.id}</div>
+                                    </div>
+                                </TableRowColumn>
+                                {/* <TableRowColumn className={style.tablerowcolumn}></TableRowColumn> */}
+                                {/* <TableRowColumn className={style.tablerowcolumn}>{v.inviterDdId}</TableRowColumn> */}
+                                {/* <TableRowColumn className={style.tablerowcolumn}>{v.qq}</TableRowColumn> */}
+
+                                <TableRowColumn className={style.tablerowcolumn}>{v.actStoryId}</TableRowColumn>
+                                {/* <TableRowColumn className={style.tablerowcolumn}>
+
+                                </TableRowColumn> */}
+                                {/* <TableRowColumn className={style.tablerowcolumn}>
+                                    <TextField
+                                    defaultValue={v.detail}
+                                    multiLine
+                                    />
+                                </TableRowColumn> */}
+                                <TableRowColumn className={style.tablerowcolumn}><a href={v.voiceUrl} target="_blank">链接</a></TableRowColumn>
+                                {/* <span>{v.stageType}</span> */}
+                                <TableRowColumn >
+                                    <SelectField
+                                        data-itemid={v.id}
+                                        value={v.dataStatus}
+                                        onChange={(e, index, value) => { e.preventDefault(); changeItemStateHandler(tk, v.id, { dataStatus: value }); }}
+                                    >
+                                        <MenuItem value={0} primaryText="未审核" />
+                                        <MenuItem value={1} primaryText="不通过" />
+                                        <MenuItem value={2} primaryText="初赛" />
+                                        <MenuItem value={3} primaryText="决赛" />
+                                        <MenuItem value={4} primaryText="获奖" />
+                                    </SelectField>
+                                </TableRowColumn>
+                                <TableRowColumn className={style.tablerowcolumn}>
+                                    <div>{v.stage1Vote}</div>
+                                    <RaisedButton label="编辑" primary={true} onClick={(e) => { e.preventDefault(); changeVoteStateHandler(tk, v.id, 1) }} />
+                                </TableRowColumn>
+                                <TableRowColumn className={style.tablerowcolumn}>
+                                    <div>{v.stage2Vote}</div>
+                                    <RaisedButton label="编辑" primary={true} onClick={(e) => { e.preventDefault(); changeVoteStateHandler(tk, v.id, 2) }} />
+                                </TableRowColumn>
+                                <TableRowColumn className={style.tablerowcolumn}>
+                                    <div>{v.rewardRank}</div>
+                                    <RaisedButton label="编辑" primary={true} onClick={(e) => { e.preventDefault(); changeRankStateHandler(tk, v.id) }} />
+                                </TableRowColumn>
+
+                                {/* <TableRowColumn className={style.tablerowcolumn}>{v.insertTime}</TableRowColumn> */}
+                                <TableRowColumn className={style.tablerowcolumn}><RaisedButton label="详情" secondary={true} onClick={() => {
+                                    showDetail({
+                                        ...v
+                                    });
+                                }} /></TableRowColumn>
+                            </TableRow>
+                        ) : (<TableRow><TableRowColumn className={style.tablerowcolumn}>sori,列表为空..</TableRowColumn></TableRow>)
+                }
+                {/* </Selection> */}
+            </TableBody>
+        </Table>
     }
 }
 

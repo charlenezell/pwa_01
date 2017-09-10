@@ -1,4 +1,47 @@
 @import "normalize.css";
-:local(.className){
+// @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+body{
+    // font-family: 'Microsoft Yahei'!important;
+}
 
+:local .top{
+    position: fixed;
+    height: 110px;
+    width: 100%;
+    z-index: 100;
+}
+:local .bottom{
+    padding-top: 110px;
+     min-width: 1280px;
+
+}
+#react-paginate ul {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#react-paginate{
+    text-align: center;
+}
+#react-paginate li {
+    display: inline-block;
+}
+
+#react-paginate .break a {
+    cursor: default;
+}
+#react-paginate li {
+    border: 1px solid #00bcd4;
+    margin: 0 5px;
+    padding: 0 5px;
+    border-radius: 3px;
+    background: #00bcd4;
+    color: #fff;
+    user-select: none;
+    cursor: pointer;
+}
+#react-paginate li.active{
+    background:#ff4081;
+    border-color:#ff4081;
+    cursor: default;
 }

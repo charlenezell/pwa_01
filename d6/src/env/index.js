@@ -4,6 +4,9 @@
   hsURLBase = "http://www.hushuo.bt/"
 // }
 
+const ITEM_PERPAGE=5;
+
 export {
-    hsURLBase
+    hsURLBase,
+    ITEM_PERPAGE
 };

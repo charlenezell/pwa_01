@@ -15,6 +15,7 @@ export const parseFormData=(event)=>{
     }
     return rst;
 }
+
 export default {
     trimEmptyObjectValue,parseFormData
 }

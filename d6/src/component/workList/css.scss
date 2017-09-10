@@ -1,34 +1,10 @@
-:local .list{
-    border-collapse: collapse;
-    width:1280px;
-}
+
 :local .item{
-    &:hover{
-     background-color:rgba(255, 152, 0, 0.23);
-    }
+
 }
 :local .item>*{
-    border: 1px solid #ccc;
-    padding: 5px;
+
 }
-:local .clickable{
-    position: relative;
-    background-color: #ccc;
-    cursor: pointer;
-    padding:0 20px;
-    text-align: center;
-    &:after{
-        content:"←";
-        position: absolute;
-        right:0;
-        top:50%;
-        margin-top: -6px;
-    }
-    &:before{
-        content:"→";
-        position: absolute;
-        left:0;
-        top:50%;
-        margin-top: -6px;
-    }
+:local .tablerowcolumn{
+    text-align: center!important;
 }

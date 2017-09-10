@@ -8,7 +8,12 @@ import {
   FETCH_SUCCESS_RECOMMENTLIST,
   INIT_PAGEDATA,
   FILTERINPUTCHANGE,
-  UPDATEITEMSTATUS
+  UPDATEITEMSTATUS,
+  SHOWDETAIL,
+  HIDEDETAIL,
+  PAGECHANGE,
+  TABLESELECTCHANGE,
+  HIDESYSTEMINFO
 } from './const.js';
 
 let initIndexPageDataSaga = () => {
@@ -39,6 +44,36 @@ const actions = {
         value,
         type
       }
+    }
+  },
+  showDetail:function(data){
+    return {
+      type:SHOWDETAIL,
+      payLoad:{
+        content:data
+      }
+    }
+  },
+  hideDetail:function(){
+    return {
+      type:HIDEDETAIL
+    }
+  },
+  pageChange:function(e){
+    return {
+      type:PAGECHANGE,
+      payLoad:e
+    };
+  },
+  tableSelectChange:function(e){
+    return {
+      type:TABLESELECTCHANGE,
+      payLoad:e
+    }
+  },
+  hideSystemInfo:function(){
+    return {
+      type:HIDESYSTEMINFO
     }
   }
 };

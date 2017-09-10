@@ -8,7 +8,8 @@ import {
     FETCH_END,
     FETCH_SUCCESS_RECOMMENTLIST,
     FILTERCHANGE,
-    SAVE_TOKEN
+    SAVE_TOKEN,
+    PAGECHANGE
 } from "../action/const.js"
 function* fetchUser() {
     let c = yield call(getQQRecommendList);
@@ -29,8 +30,8 @@ function* initPageData() {
 
 
 function* _renderPageData(token) {
-    let { filter } = yield select();
-    let data = yield call(getEditorList, { tk: token, ...util.trimEmptyObjectValue(filter) });
+    let { filter,workListStatus:{offset,limit} } = yield select();
+    let data = yield call(getEditorList, { tk: token, ...util.trimEmptyObjectValue(filter) ,offset,limit});
     yield put({
         type: FETCH_SUCCESS_RECOMMENTLIST,
         payLoad: data
@@ -47,4 +48,5 @@ export default function* mySaga() {
     // yield takeLatest("USER_FETCH", fetchUser);
     yield takeLatest(INIT_PAGEDATA, initPageData);
     yield takeLatest(FILTERCHANGE, renderPageData);
+    yield takeLatest(PAGECHANGE, renderPageData);
 }
