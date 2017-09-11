@@ -85,7 +85,8 @@ const reducers = {
         }
       case HIDESYSTEMINFO:
         return {
-          show: false
+          show: false,
+          content:""
         }
       default:
         return state
