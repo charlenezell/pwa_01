@@ -145,7 +145,7 @@ let Windex = connect((state) => {
         },
         changeVoteStateHandler: function (tk, id, stageId) {
             let c = prompt("票数修改为：");
-            if (c.toString().trim()) {
+            if (c&&c.toString().trim()) {
                 let vote = c.toString().trim();
 
                 editVote(tk, id, stageId, vote).then(
@@ -161,7 +161,7 @@ let Windex = connect((state) => {
         },
         changeRankStateHandler: function (tk, id) {
             let c = prompt("排名修改为：");
-            if (c.toString().trim()) {
+            if (c&&c.toString().trim()) {
                 let newRank = c.toString().trim();
                 let d = [{ id: id, rewardRank: newRank }];
                 changeItemState(tk, JSON.stringify(d)).then(

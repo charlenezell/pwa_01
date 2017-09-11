@@ -4,13 +4,15 @@ let common = require("./webpack.common.js");
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-
+// var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = merge(common, {
     cache: false,
-    devtool: 'source-map',
+    devtool: 'hidden-source-map',
     plugins: [
-        new UglifyJSPlugin(),
+        new UglifyJSPlugin({
+            sourceMap: true
+        }),
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify('production')
