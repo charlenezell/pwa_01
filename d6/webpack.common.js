@@ -75,10 +75,10 @@ module.exports = {
 
         // options for resolving module requests
         // (does not apply to resolving to loaders)
-        "alias":{
-            "react":"preact-compat",
-            "react-dom":"preact-compat"
-        },
+        // "alias":{
+        //     "react":"preact-compat",
+        //     "react-dom":"preact-compat"
+        // },
         modules: [
             "node_modules"
         ],
